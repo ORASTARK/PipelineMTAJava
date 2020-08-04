@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>HelloWorld</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="./jquery-3.5.1.min.js"></script>
+  <style>
+    .inner,
+    h2 {
+      width: fit-content;
+      margin: 0 auto;
+      margin-top: 100px;
+      position: relative;
+    }
+
+    input[type='number'] {
+      width: 120px;
+    }
+
+    .inner .line {
+      margin: 20px 0;
+      display: flex;
+    }
+
+    .inner .line span {
+      display: block;
+      width: 50px;
+      text-align: center;
+    }
+
+    .inner .line button {
+      margin-left: 20px;
+      width: 50px;
+    }
+
+    #calc_btn {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 128px;
+      height: 62px;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Calculator</h2>
+  <div id="app">
+    <div class="inner">
+      <div class="add line">
+        <input name="select" value="add" type="radio">
+        <input style=" margin-left: 50px;" type="number" />
+        <span>+</span>
+        <input type="number" />
+        <span>=</span>
+        <input type="number" disabled />
+      </div>
+      <div class="minus line">
+        <input name="select" value="minus" type="radio">
+        <input style="  margin-left: 50px;" type="number" />
+        <span>-</span>
+        <input type="number" />
+        <span>=</span>
+        <input type="number" disabled />
+      </div>
+      <div class="times line">
+        <input name="select" value="times" type="radio">
+        <input style=" margin-left: 50px;" type="number" />
+        <span>*</span>
+        <input type="number" />
+        <span>=</span>
+        <input type="number" disabled />
+      </div>
+      <div class="divide line">
+        <input name="select" value="divide" type="radio">
+        <input style=" margin-left: 50px;" type="number" />
+        <span>/</span>
+        <input type="number" />
+        <span>=</span>
+        <input type="number" disabled />
+      </div>
+      <div class="sin line">
+        <input name="select" value="sin" type="radio">
+        <span>sin</span>
+        <input style="width: 119px;" type="number" />
+        <span>=</span>
+        <input type="number" disabled />
+      </div>
+      <div class="cos line">
+        <input name="select" value="cos" type="radio">
+        <span>cos</span>
+        <input style="width: 119px;" type="number" />
+        <span>=</span>
+        <input type="number" disabled />
+      </div>
+      <div class="tan line">
+        <input name="select" value="tan" type="radio">
+        <span>tan</span>
+        <input style="width: 119px;" type="number" />
+        <span>=</span>
+        <input type="number" disabled />
+      </div>
+      <div class="cot line">
+        <input name="select" value="cot" type="radio">
+        <span>cot</span>
+        <input style="width: 119px;" type="number" />
+        <span>=</span>
+        <input type="number" disabled />
+      </div>
+      <div class="calc-btn">
+        <button id="calc_btn">Calculate</button>
+      </div>
+    </div>
+
+  </div>
+  <script src="app.js"></script>
+</body>
+
+</html>

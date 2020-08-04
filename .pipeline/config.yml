@@ -1,0 +1,46 @@
+general:
+  collectTelemetryData: false
+  nodeLabel: 'slave3'
+  
+steps:
+  mavenExecute:
+    dockerImage: devxci/mbtci:1.0.4
+  tmsUpload: 
+    proxy: 'http://rb-proxy-sl.bosch.com:8080'
+    verbose: true
+stages:    
+  stageBuild: 
+    nodeLabel: 'slave3'
+        
+  sonarQubeScan:
+    dockerImage: 'sonarsource/sonar-scanner-cli:latest'
+    runInAllBranches: true
+    projectKey: "com.bosch.s4t.PipelineMTAJava"
+    instance: "MySonar"
+    sonarProperties:
+        - 'sonar.jacoco.reportPaths=s4hana_pipeline/reports/coverage-reports/unit-tests.exec,s4hana_pipeline/reports/coverage-reports/integration-tests.exec'
+        - 'sonar.sources=.'
+        - 'sonar.host.url=https://sonarQubeServer'
+        - 'sonar.login=yourCredential'
+        
+  s4SdkQualityChecks:
+    disabledChecks: ["checkServices"]
+    jacocoExcludes:
+       - '**/Application.class'
+       - '**/Swagger2Config.class'
+       - '**/*.html'
+       - '**/*.js'
+                      
+  productionDeployment:
+    tmsUpload:
+        nodeName: 'YourTransportNode'
+        credentialsId: 'YourServiceKey'
+        customDescription: 'Desc'
+        verbose: true
+
+postActions:
+  sendNotification:
+    enabled: true
+    skipFeatureBranches: false
+    recipients:
+    - yourEmail@corp.com

@@ -1,0 +1,15 @@
+ID: PipelineMTAJava
+_schema-version: '3.1'
+version: 0.0.1
+
+modules:
+  - name: PipelineMTAJava-srv
+    type: java
+    path: application
+    properties:
+      EXIT: 1  # required by deploy.js task to terminate
+    build-parameters:
+      builder: custom
+      commands: [ mvn clean package ]
+      build-result: "target/*.[wj]ar"
+
